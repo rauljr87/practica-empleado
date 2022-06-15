@@ -1,8 +1,13 @@
 from django.shortcuts import render
 # vistas genéricas
-from django.views.generic import TemplateView, ListView
+from django.views.generic import (
+    TemplateView,
+    ListView,
+    CreateView
+)
 # models
 from .models import Prueba
+
 
 class PruebaView(TemplateView):
     """ Muestra un template """
@@ -19,6 +24,16 @@ class PruebaListView(ListView):
 
 
 class ListarPrueba(ListView):
+    """ Lista los objetos creados """
+
     template_name = "home/lista_prueba.html"
     model = Prueba
     context_object_name = 'lista'
+
+
+class PruebaCreateView(CreateView):
+    """ Crea objetos """
+
+    template_name = "home/add.html"
+    model = Prueba
+    fields = ['titulo', 'subtitulo', 'cantidad']
