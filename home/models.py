@@ -1,7 +1,7 @@
 from django.db import models
 
 
-# base de datos
+# tabla para base de datos
 
 
 class Prueba(models.Model):
