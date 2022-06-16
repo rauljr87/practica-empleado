@@ -1,8 +1,21 @@
 from django.db import models
-
 from departamento.models import Departamento
 
+
 # tabla para base de datos
+
+
+class Habilidades(models.Model):
+    """ Conjunto de habilidades para empleados """
+
+    habilidad = models.CharField('Habilidad', max_length=50)
+
+    class Meta:
+        verbose_name = 'Habilidad'
+        verbose_name_plural = 'Habilidades Empleados'
+
+    def __str__(self):
+        return str(self.id) + '-' + self.habilidad
 
 
 class Empleado(models.Model):
