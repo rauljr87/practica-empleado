@@ -30,8 +30,11 @@ class Empleado(models.Model):
     first_name = models.CharField('Nombre', max_length=60)
     last_name = models.CharField('Apellido', max_length=60)
     job = models.CharField('Trabajo', max_length=50, choices=JOB_CHOICES)
+    # relación one to many
     departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
     # image = models.ImageField(upload_to=None, height_field=None, width_field=None)
+    # relación many to many
+    habilidades = models.ManyToManyField(Habilidades)
 
     # Meta, vendría a ser tipo decorador de atributos
     class Meta:
