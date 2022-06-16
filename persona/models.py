@@ -32,7 +32,7 @@ class Empleado(models.Model):
     job = models.CharField('Trabajo', max_length=50, choices=JOB_CHOICES)
     # relación one to many
     departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
-    # image = models.ImageField(upload_to=None, height_field=None, width_field=None)
+    # avatar = models.ImageField(upload_to='empleado', blank=True, null=True)
     # relación many to many
     habilidades = models.ManyToManyField(Habilidades)
 
