@@ -5,6 +5,7 @@ from .views import (
     ListByAreaEmpleado,
     ListByJobs,
     ListEmpleadosByKword,
+    ListHabilidadesEmpleado,
 )
 
 
@@ -17,4 +18,5 @@ urlpatterns = [
     # job, variable declarada para aplicar filtro de empleados por trabajo
     path('list_by_job/<job>/', ListByJobs.as_view(), name='list_by_job'),
     path('list_by_kword/', ListEmpleadosByKword.as_view(), name='list_by_kword'),
+    path('list_by_habilidades/', ListHabilidadesEmpleado.as_view(), name='list_by_habilidades')
 ]

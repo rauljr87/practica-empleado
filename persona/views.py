@@ -10,6 +10,9 @@ class ListAllEmpleados(ListView):
     """ Lista todos los empleados de la empresa """
 
     template_name = 'persona/list_all.html'
+    # paginación por bloques de 4
+    paginate_by = 4
+    ordering = 'first_name'
     model = Empleado
     # variable para el template
     # context_object_name = 'lista'
@@ -93,3 +96,26 @@ class ListEmpleadosByKword(ListView):
 
 
 # 5.- Listar habilidades de un empleado.
+
+
+class ListHabilidadesEmpleado(ListView):
+    """ Lista todos los empleados por habilidades """
+
+    template_name = 'persona/list_by_habilidades.html'
+    context_object_name = 'habilidades'
+
+    def get_queryset(self):
+        """ Captura el texto enviado por el input a través del form, method GET REQUEST """
+
+        # kword, id capturado del GET REQUEST enviado por el input del formulario en el template
+        palabra_clave = self.request.GET.get("habilidad")
+
+        # recupera un único objeto empleado
+        empleado = Empleado.objects.get(
+            # método get para obtener listado de habilidades por id
+            id=palabra_clave
+        )
+
+        print("#############")
+        print(empleado.habilidades.all())
+        return empleado.habilidades.all()
