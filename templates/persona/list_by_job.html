@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lista by area</title>
+    <title>Lista por trabajo</title>
 </head>
 <body>
-<h1>Lista de empleados por departamento</h1>
-<!-- sin incluir un context_object_name en la view -->
-<!-- {{ object_list }} -->
+<h1>Lista de empleados por trabajo</h1>
+
 <ul>
     {% for empleado in object_list %}
         <li>{{ empleado }}</li>
