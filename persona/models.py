@@ -1,6 +1,9 @@
 from django.db import models
 from departamento.models import Departamento
 
+# third party
+from ckeditor.fields import RichTextField
+
 
 # tabla para base de datos
 
@@ -35,6 +38,7 @@ class Empleado(models.Model):
     # avatar = models.ImageField(upload_to='empleado', blank=True, null=True)
     # relación many to many
     habilidades = models.ManyToManyField(Habilidades)
+    hoja_vida = RichTextField()
 
     # Meta, vendría a ser tipo decorador de atributos
     class Meta:
