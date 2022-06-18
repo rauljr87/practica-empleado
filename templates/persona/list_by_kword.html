@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista by kword</title>
+</head>
+<body>
+<h1>Lista de empleados por palabra clave</h1>
+
+<form method="GET">
+
+    <!-- llave de seguridad para negociación http -->
+    {% csrf_token %}
+
+    <!-- id = kword, id que usará la view ListEmpleadosByKword para capturar el GET REQUEST enviado por el
+     input del formulario -->
+    <input name="kword" type="text" id="kword" placeholder="Ingrese nombre aquí">
+    <button type="submit">Buscar</button>
+</form>
+
+<hr>
+
+<h3>Lista resultados</h3>
+
+<ul>
+    <!-- a través de un context_object_name = empleados en la view -->
+    {% for empleado in empleados %}
+        <li>{{ empleado }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

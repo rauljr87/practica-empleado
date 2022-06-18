@@ -57,11 +57,39 @@ class ListByJobs(ListView):
         job = self.kwargs['job']
 
         lista = Empleado.objects.filter(
-            # filtro queryset por job a departamento del modelo Empleado
+            # filtro queryset por job del modelo Empleado
             job=job
         )
         return lista
 
 
 # 4.- Listar empleados por palabra clave.
+
+
+class ListEmpleadosByKword(ListView):
+    """ Lista todos los empleados por palabra clave """
+
+    template_name = 'persona/list_by_kword.html'
+    context_object_name = 'empleados'
+
+    def get_queryset(self):
+        """ Captura el texto enviado por el input a través del form, method GET REQUEST """
+
+        print('######################')
+
+        # kword, id capturado del GET REQUEST enviado por el input del formulario en el template
+        palabra_clave = self.request.GET.get("kword",)
+
+        print('===========', palabra_clave)
+
+        lista = Empleado.objects.filter(
+            # filtro queryset por first_name a modelo Empleado
+            first_name=palabra_clave
+        )
+        print('##################')
+        print('Lista resultado:', lista)
+
+        return lista
+
+
 # 5.- Listar habilidades de un empleado.
