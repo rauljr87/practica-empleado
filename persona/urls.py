@@ -1,13 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-
-
-def prueba_persona(self):
-    return print('prueba persona')
+from .views import ListAllEmpleados
 
 
 app_name = 'persona'
 
 urlpatterns = [
-    path('', prueba_persona, name='pruebaPersona'),
+    path('list_all/', ListAllEmpleados.as_view(), name='list_all'),
 ]

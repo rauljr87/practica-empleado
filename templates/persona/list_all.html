@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List_all</title>
+</head>
+<body>
+<h1>Lista de todos los empleados</h1>
+<!-- a través de un context_object_name en la view -->
+<!-- {{ lista }} -->
+
+<!-- sin incluir un context_object_name en la view -->
+<!-- {{ object_list }} -->
+
+<ul>
+    {% for empleado in object_list %}
+        <li>{{ empleado }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
