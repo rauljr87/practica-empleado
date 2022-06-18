@@ -19,6 +19,7 @@ class PruebaListView(ListView):
     """ Lista un variable queryset """
 
     template_name = 'home/lista.html'
+    # variable para el template
     context_object_name = 'listaNumeros'
     queryset = ['0', '10', '20', '30']
 
@@ -28,6 +29,7 @@ class ListarPrueba(ListView):
 
     template_name = "home/lista_prueba.html"
     model = Prueba
+    # variable para el template
     context_object_name = 'lista'
 
 

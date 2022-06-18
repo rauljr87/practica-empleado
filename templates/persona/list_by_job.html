@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista por trabajo</title>
+</head>
+<body>
+<h1>Lista de empleados por trabajo</h1>
+
+<ul>
+    {% for empleado in object_list %}
+        <li>{{ empleado }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>
