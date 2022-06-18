@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail View empleado</title>
+</head>
+<body>
+<h1>Detalle de un Empleado {{ titulo }}</h1>
+
+<!-- utilizando palabra reservada para obtener todos los objetos -->
+<!-- {{ object }} -->
+
+<!-- utilizando el nombre del modelo pero en minúscula -->
+{{ empleado }}
+
+<h3>Todos los datos del empleado:</h3>
+<p>{{ empleado.first_name }}</p>
+<p>{{ empleado.last_name }}</p>
+<p>{{ empleado.job }}</p>
+<p>{{ empleado.departamento }}</p>
+<p>{{ empleado.habilidades }}</p>
+
+</body>
+</html>

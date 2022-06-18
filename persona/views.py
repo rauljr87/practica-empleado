@@ -1,6 +1,13 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import (
+    ListView,
+    DetailView,
+    CreateView
+)
 from .models import Empleado
+
+
+# LISTVIEW
 
 
 # 1.- Listar todos los empleados de la empresa.
@@ -9,11 +16,11 @@ from .models import Empleado
 class ListAllEmpleados(ListView):
     """ Lista todos los empleados de la empresa """
 
+    model = Empleado
     template_name = 'persona/list_all.html'
     # paginación por bloques de 4
     paginate_by = 4
     ordering = 'first_name'
-    model = Empleado
     # variable para el template
     # context_object_name = 'lista'
 
@@ -119,3 +126,21 @@ class ListHabilidadesEmpleado(ListView):
         print("#############")
         print(empleado.habilidades.all())
         return empleado.habilidades.all()
+
+
+# DETAILVIEW
+
+
+class EmpleadoDetailView(DetailView):
+    model = Empleado
+    template_name = "persona/detail_empleado.html"
+
+    def get_context_data(self, **kwargs):
+        """ envía alguna variable extra al template """
+        context = super(EmpleadoDetailView, self).get_context_data(**kwargs)
+        # variable de aumento en el template
+        context['titulo'] = 'Empleado del mes'
+        return context
+
+
+# CREATEVIEW
