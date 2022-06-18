@@ -18,16 +18,14 @@ class ListAllEmpleados(ListView):
 # 2.- Listar todos los empleados que pertenecen a una área de la empresa
 
 
-class ListByArea(ListView):
+class ListByAreaEmpleado(ListView):
     """ Lista todos los empleados de la empresa por su área """
 
     template_name = 'persona/list_by_area.html'
-    model = Empleado
-
+    queryset = Empleado.objects.filter(
+        departamento__short_name='informatica',
+    )
 
 # 3.- Listar empleados por trabajo.
 # 4.- Listar empleados por palabra clave.
 # 5.- Listar habilidades de un empleado.
-
-
-

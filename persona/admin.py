@@ -31,7 +31,7 @@ class EmpleadoAdmin(admin.ModelAdmin):
     search_fields = ('first_name',)
 
     # filter
-    list_filter = ('job', 'habilidades')
+    list_filter = ('departamento', 'job', 'habilidades',)
 
     # filtro horizontal solo sirve para many to many
     filter_horizontal = ('habilidades',)
