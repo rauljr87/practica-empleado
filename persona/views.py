@@ -4,7 +4,8 @@ from django.views.generic import (
     ListView,
     DetailView,
     CreateView,
-    TemplateView
+    TemplateView,
+    UpdateView,
 )
 from .models import Empleado
 
@@ -51,6 +52,7 @@ class ListByAreaEmpleado(ListView):
             # filtro queryset por short_name a departamento del modelo Empleado
             departamento__short_name=area
         )
+
         return lista
 
 
@@ -72,6 +74,7 @@ class ListByJobs(ListView):
             # filtro queryset por job del modelo Empleado
             job=job
         )
+
         return lista
 
 
@@ -98,6 +101,7 @@ class ListEmpleadosByKword(ListView):
             # filtro queryset por first_name a modelo Empleado
             first_name=palabra_clave
         )
+
         print('##################')
         print('Lista resultado:', lista)
 
@@ -127,6 +131,7 @@ class ListHabilidadesEmpleado(ListView):
 
         print("#############")
         print(empleado.habilidades.all())
+
         return empleado.habilidades.all()
 
 
@@ -141,17 +146,24 @@ class EmpleadoDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         """ envía alguna variable extra al template """
+
         context = super(EmpleadoDetailView, self).get_context_data(**kwargs)
         # variable de aumento en el template
         context['titulo'] = 'Empleado del mes'
+
         return context
 
 
-# CREATEVIEW
+# TEMPLATEVIEW
 
 
 class SuccessView(TemplateView):
+    """ Muestra una página una vez creado un registro """
+
     template_name = "persona/success.html"
+
+
+# CREATEVIEW
 
 
 class EmpleadoCreateView(CreateView):
@@ -176,6 +188,7 @@ class EmpleadoCreateView(CreateView):
     # url cuando form exitoso, name
     success_url = reverse_lazy('persona_app:success')
 
+    # proceso previo al guardado de datos
     def form_valid(self, form):
         """ crear full name a partir de first_name y last_name """
 
@@ -186,3 +199,42 @@ class EmpleadoCreateView(CreateView):
         empleado.save()
 
         return super(EmpleadoCreateView, self).form_valid(form)
+
+
+# UPDATEVIEW
+
+
+class EmpleadoUpdateView(UpdateView):
+    """ Actualiza registro de empleado """
+
+    template_name = "persona/update_empleado.html"
+    model = Empleado
+    fields = [
+        'first_name',
+        'last_name',
+        'job',
+        'departamento',
+        'habilidades',
+    ]
+    success_url = reverse_lazy('persona_app:success')
+
+    # procesos previos al guardado de datos
+    def post(self, request, *args, **kwargs):
+        """  """
+
+        self.object = self.get_object()
+
+        print('######## METODO POST ########')
+        print('*****************************')
+        print(request.POST)
+        print(request.POST['last_name'])
+
+        return super().post(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        """  """
+
+        print('######## METODO FORM VALID ########')
+        print('#############################')
+
+        return super(EmpleadoUpdateView, self).form_valid(form)
