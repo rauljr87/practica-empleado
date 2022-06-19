@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List by habilidades</title>
+</head>
+<body>
+<h1>Lista de empleados por habilidades</h1>
+
+<form method="GET">
+
+    <!-- llave de seguridad para negociación http -->
+    {% csrf_token %}
+
+    <!-- id = habilidad, id que usará la view ListHabilidadesEmpleado para capturar el GET REQUEST enviado por el
+     input del formulario -->
+    <input name="habilidad" type="text" id="habilidad" placeholder="Ingrese ID aquí">
+    <button type="submit">Buscar</button>
+</form>
+
+<br>
+
+<lu>
+    {% for habilidad in habilidades %}
+        <li>{{ habilidad }}</li>
+    {% endfor %}
+</lu>
+
+</body>
+</html>

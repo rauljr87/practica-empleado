@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete empleado</title>
+</head>
+<body>
+<h1>Elimina un registro de empleado, estas seguro?!!</h1>
+
+<form method="POST">
+    <!-- security key to negotiation html -->
+    {% csrf_token %}
+
+    <p>Confirme que desea eliminar</p>
+    <button type="submit">Confirmar</button>
+</form>
+
+</body>
+</html>

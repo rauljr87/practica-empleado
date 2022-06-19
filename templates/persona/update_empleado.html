@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update empleado</title>
+</head>
+<body>
+<h1>Actualización de empleado</h1>
+
+<form method="POST">
+    <!-- llave de seguridad para negociación http -->
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Actualizar</button>
+</form>
+
+</body>
+</html>

@@ -5,5 +5,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls', namespace='home')),
     path('', include('persona.urls', namespace='persona')),
-    # path('departamento', include('departamento.urls', namespace='departamento')),
+    path('', include('departamento.urls', namespace='departamento')),
 ]

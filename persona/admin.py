@@ -12,6 +12,7 @@ class EmpleadoAdmin(admin.ModelAdmin):
     """ Class para decorar model Empleado """
 
     list_display = (
+        'id',
         'first_name',
         'last_name',
         'departamento',
