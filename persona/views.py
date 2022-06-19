@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views.generic import (
     ListView,
     DetailView,
@@ -165,4 +166,6 @@ class EmpleadoCreateView(CreateView):
     # url cuando form exitoso, misma page
     # success_url = '.'
     # url cuando form exitoso
-    success_url = '/success'
+    # success_url = '/success'
+    # url cuando form exitoso, name
+    success_url = reverse_lazy('persona_app:success')

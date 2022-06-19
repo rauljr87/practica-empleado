@@ -12,7 +12,7 @@ from .views import (
 )
 
 
-app_name = 'persona'
+app_name = 'persona_app'
 
 urlpatterns = [
     path('list_all/', ListAllEmpleados.as_view(), name='list_all'),
