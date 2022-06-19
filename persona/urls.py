@@ -6,7 +6,8 @@ from .views import (
     ListByJobs,
     ListEmpleadosByKword,
     ListHabilidadesEmpleado,
-    EmpleadoDetailView
+    EmpleadoDetailView,
+    EmpleadoCreateView
 )
 
 
@@ -22,5 +23,6 @@ urlpatterns = [
     path('list_by_kword/', ListEmpleadosByKword.as_view(), name='list_by_kword'),
     path('list_by_habilidades/', ListHabilidadesEmpleado.as_view(), name='list_by_habilidades'),
     # DetailView
-    path('detail_empleado/<pk>/', EmpleadoDetailView.as_view(), name='detail_empleado')
+    path('detail_empleado/<pk>/', EmpleadoDetailView.as_view(), name='detail_empleado'),
+    path('add_empleado/', EmpleadoCreateView.as_view(), name='add_empleado')
 ]

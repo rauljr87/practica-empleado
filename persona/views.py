@@ -16,8 +16,8 @@ from .models import Empleado
 class ListAllEmpleados(ListView):
     """ Lista todos los empleados de la empresa """
 
-    model = Empleado
     template_name = 'persona/list_all.html'
+    model = Empleado
     # paginación por bloques de 4
     paginate_by = 4
     ordering = 'first_name'
@@ -132,8 +132,10 @@ class ListHabilidadesEmpleado(ListView):
 
 
 class EmpleadoDetailView(DetailView):
-    model = Empleado
+    """ Muestra detalles de un empleado """
+
     template_name = "persona/detail_empleado.html"
+    model = Empleado
 
     def get_context_data(self, **kwargs):
         """ envía alguna variable extra al template """
@@ -144,3 +146,11 @@ class EmpleadoDetailView(DetailView):
 
 
 # CREATEVIEW
+
+
+class EmpleadoCreateView(CreateView):
+    """ Crea registro de empleado """
+
+    template_name = 'persona/add_empleado.html'
+    model = Empleado
+    fields = ['first_name', 'last_name', 'job']
