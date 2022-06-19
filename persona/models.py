@@ -32,6 +32,7 @@ class Empleado(models.Model):
     )
     first_name = models.CharField('Nombre', max_length=60)
     last_name = models.CharField('Apellido', max_length=60)
+    full_name = models.CharField('Nombres completos', max_length=120, blank=True)
     job = models.CharField('Trabajo', max_length=50, choices=JOB_CHOICES)
     # relación one to many
     departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
