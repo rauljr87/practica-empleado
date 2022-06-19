@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.views.generic import (
     ListView,
     DetailView,
-    CreateView
+    CreateView,
+    TemplateView
 )
 from .models import Empleado
 
@@ -148,6 +149,10 @@ class EmpleadoDetailView(DetailView):
 # CREATEVIEW
 
 
+class SuccessView(TemplateView):
+    template_name = "persona/success.html"
+
+
 class EmpleadoCreateView(CreateView):
     """ Crea registro de empleado """
 
@@ -157,5 +162,7 @@ class EmpleadoCreateView(CreateView):
     # fields = ['first_name', 'last_name', 'job']
     # todos los fields
     fields = ('__all__')
-    # redirect page después de llenar formulario
-    success_url = '.'
+    # url cuando form exitoso, misma page
+    # success_url = '.'
+    # url cuando form exitoso
+    success_url = '/success'
