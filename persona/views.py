@@ -153,4 +153,7 @@ class EmpleadoCreateView(CreateView):
 
     template_name = 'persona/add_empleado.html'
     model = Empleado
-    fields = ['first_name', 'last_name', 'job']
+    # field específicos
+    # fields = ['first_name', 'last_name', 'job']
+    # todos los fields
+    fields = ('__all__')
