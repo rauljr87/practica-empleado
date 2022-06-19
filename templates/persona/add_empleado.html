@@ -6,13 +6,17 @@
 </head>
 <body>
 <h1>Creación de objeto empleado</h1>
-
 <!--
 <input type="text" placeholder="nombre">
 <input type="text" placeholder="apellido">
 -->
+<form method="POST">
+    <!-- llave de seguridad para negociación http -->
+    {% csrf_token %}
 
-{{ form.as_p }}
+    {{ form.as_p }}
 
+    <button  type="submit">Agregar</button>
+</form>
 </body>
 </html>

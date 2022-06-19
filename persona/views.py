@@ -157,3 +157,5 @@ class EmpleadoCreateView(CreateView):
     # fields = ['first_name', 'last_name', 'job']
     # todos los fields
     fields = ('__all__')
+    # redirect page después de llenar formulario
+    success_url = '.'
