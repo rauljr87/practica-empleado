@@ -39,3 +39,4 @@ class PruebaCreateView(CreateView):
     template_name = "home/add.html"
     model = Prueba
     fields = ['titulo', 'subtitulo', 'cantidad']
+    success_url = '/'

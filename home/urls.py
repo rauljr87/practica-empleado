@@ -7,7 +7,7 @@ from .views import (
 )
 
 
-app_name = 'home'
+app_name = 'home_app'
 
 urlpatterns = [
     path('prueba/', PruebaView.as_view(), name='prueba'),

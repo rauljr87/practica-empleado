@@ -7,7 +7,18 @@
 <body>
 <h1>Prueba PruebaCreateView</h1>
 
-{{ form }}
+<form method="POST">
 
+    <!-- security key to negotiation html -->
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <button type="submit">Crear</button>
+</form>
+<!--
+<br>
+<label for="prueba">prueba:</label>
+<input type="text" placeholder="Ingrese texto quí">
+-->
 </body>
 </html>
