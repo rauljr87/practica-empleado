@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import (
@@ -6,6 +7,7 @@ from django.views.generic import (
     CreateView,
     TemplateView,
     UpdateView,
+    DeleteView,
 )
 from .models import Empleado
 
@@ -238,3 +240,12 @@ class EmpleadoUpdateView(UpdateView):
         print('#############################')
 
         return super(EmpleadoUpdateView, self).form_valid(form)
+
+
+# DELETEVIEW
+
+
+class EmpleadoDeleteView(DeleteView):
+    template_name = "persona/delete_empleado.html"
+    model = Empleado
+    success_url = reverse_lazy('persona_app:success')

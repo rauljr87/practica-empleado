@@ -10,6 +10,7 @@ from .views import (
     EmpleadoCreateView,
     SuccessView,
     EmpleadoUpdateView,
+    EmpleadoDeleteView,
 )
 
 
@@ -32,4 +33,6 @@ urlpatterns = [
     path('success/', SuccessView.as_view(), name='success'),
     # UpdateView
     path('update_empleado/<pk>/', EmpleadoUpdateView.as_view(), name='update_empleado'),
+    # DeleteView
+    path('delete_empleado/<pk>/', EmpleadoDeleteView.as_view(), name='delete_empleado'),
 ]
