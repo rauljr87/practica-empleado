@@ -177,5 +177,12 @@ class EmpleadoCreateView(CreateView):
     success_url = reverse_lazy('persona_app:success')
 
     def form_valid(self, form):
-        None
-        return super(EmpleadoDetailView, self).form_valid(form)
+        """ crear full name a partir de first_name y last_name """
+
+        # instancia temporalmente la variable empleado
+        empleado = form.save(commit=False)
+        print(empleado)
+        empleado.full_name = empleado.first_name + ' ' + empleado.last_name
+        empleado.save()
+
+        return super(EmpleadoCreateView, self).form_valid(form)
