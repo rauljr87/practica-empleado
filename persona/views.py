@@ -160,12 +160,22 @@ class EmpleadoCreateView(CreateView):
     template_name = 'persona/add_empleado.html'
     model = Empleado
     # field específicos
-    # fields = ['first_name', 'last_name', 'job']
+    fields = [
+        'first_name',
+        'last_name',
+        'job',
+        'departamento',
+        'habilidades',
+    ]
     # todos los fields
-    fields = ('__all__')
+    # fields = ('__all__')
     # url cuando form exitoso, misma page
     # success_url = '.'
     # url cuando form exitoso
     # success_url = '/success'
     # url cuando form exitoso, name
     success_url = reverse_lazy('persona_app:success')
+
+    def form_valid(self, form):
+        None
+        return super(EmpleadoDetailView, self).form_valid(form)
