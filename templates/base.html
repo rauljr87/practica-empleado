@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/foundation.min.css' %}">
+    <title>        
+        {% block title %}
+            
+        {% endblock title %} 
+    </title>
+</head>
+<body>
+
+{% block content %}
+    
+{% endblock content %}
+
+<!-- 
+código javascrip de la página de foundation,
+incluir las rutas js dentro del tag static 
+-->
+<script src= {% static 'js/vendor/jquery.js' %}></script>
+<script src= {% static 'js/vendor/what-input.js' %}></script>
+<script src= {% static 'js/vendor/foundation.min.js' %}></script>
+<script>
+  $(document).foundation();
+</script>
+    
+</body>
+</html>
