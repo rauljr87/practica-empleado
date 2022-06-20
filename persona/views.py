@@ -165,6 +165,12 @@ class SuccessView(TemplateView):
     template_name = "persona/success.html"
 
 
+class InicioTemplateView(TemplateView):
+    """ Vista que carga la página de inicio """
+
+    template_name = 'inicio.html'
+
+
 # CREATEVIEW
 
 
