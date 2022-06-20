@@ -16,6 +16,17 @@
 {% block content %}
     
 {% endblock content %}
+
+<!-- 
+código javascrip de la página de foundation,
+incluir las rutas js dentro del tag static 
+-->
+<script src= {% static 'js/vendor/jquery.js' %}></script>
+<script src= {% static 'js/vendor/what-input.js' %}></script>
+<script src= {% static 'js/vendor/foundation.min.js' %}></script>
+<script>
+  $(document).foundation();
+</script>
     
 </body>
 </html>
