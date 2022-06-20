@@ -1,22 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>List_all</title>
-</head>
-<body>
-<h1>Lista de todos los empleados</h1>
+<!-- herencia de base.html -->
+{% extends 'base.html' %}
+
+
+<!-- título de la página -->
+{% block title %}
+    Lista_todos_empleados
+{% endblock title %}
+    
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<div class="grid-container" style="border: 1px solid green;">
+    <div class="grid-x">
+        <h1 class="cell">Lista Empleados</h1>
+        <div class="cell grid-x grid-margin-x">
+            <div class="cell large-5">
+                <input type="text" placeholder="Buscar empleado">
+            </div>
+            <div class="cell large-2">
+                <button class="submit success button" style="border-radius: 8px">Buscar</button>
+            </div>
+        </div>
+        <div class="cell" style="border: 1px solid yellow;">
+            <table>
+                <thead>
+                  <tr>
+                    <th width="50">ID</th>
+                    <th width="50">NOMBRES</th>
+                    <th width="50">APELLIDOS</th>
+                    <th width="50">DEPARTAMENTOS</th>
+                    <th width="50">ACCION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for empleado in object_list %}
+                  <tr>
+                    <td>{{ empleado.id }}</td>
+                    <td>{{ empleado.first_name }}</td>
+                    <td>{{ empleado.last_name }}</td>
+                    <td>{{ empleado.departamento }}</td>
+                    <!-- ACCION -->
+                    <td>
+                        <a class="button primary" style="border-radius: 8px" href="#">Ver</a>
+                    </td>
+                  </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock content %}
+
+
+<!-- Lista de todos los empleados -->
 <!-- a través de un context_object_name en la view -->
 <!-- {{ lista }} -->
 
 <!-- sin incluir un context_object_name en la view -->
 <!-- {{ object_list }} -->
 
+<!--
+<h1>Lista de todos los empleados</h1>
+    
 <ul>
     {% for empleado in object_list %}
         <li>{{ empleado }}</li>
     {% endfor %}
 </ul>
-
-</body>
-</html>
+-->
