@@ -1,22 +1,126 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>List_all</title>
-</head>
-<body>
-<h1>Lista de todos los empleados</h1>
+<!-- herencia de base.html -->
+{% extends 'base.html' %}
+
+
+<!-- título de la página -->
+{% block title %}
+    Lista_todos_empleados
+{% endblock title %}
+    
+
+{% block content %}
+{% include 'includes/header.html' %}
+
+<!-- grid contenedor -->
+<div class="grid-container">
+    <!-- lienzo grid x-->
+    <div class="grid-x">
+        
+        <!-- celda hija de grid-x -->
+        <h1 class="cell">Lista Empleados</h1>
+
+        <!-- Formulario -->
+        <!-- el form activa las opciones de input y button por html -->
+        <form class="cell grid-x grid-margin-x" method="GET">
+            {% csrf_token %}
+            <div class="cell large-5">
+                <input type="text" id="kword" name="kword" placeholder="Buscar empleado">
+            </div>
+            <div class="cell large-2">
+                <button class="submit success button" style="border-radius: 8px">Buscar</button>
+            </div>
+        </form>
+
+        <!-- celda hija de grid-x que muestra las consultas en tabla de resultados -->
+        <div class="cell">
+            <table>
+                <thead>
+                  <tr>
+                    <th width="50">ID</th>
+                    <th width="50">NOMBRES</th>
+                    <th width="50">APELLIDOS</th>
+                    <th width="50">DEPARTAMENTOS</th>
+                    <th width="50">ACCION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for empleado in empleados %}
+                  <tr>
+                    <td>{{ empleado.id }}</td>
+                    <td>{{ empleado.first_name }}</td>
+                    <td>{{ empleado.last_name }}</td>
+                    <td>{{ empleado.departamento }}</td>
+                    <!-- ACCION -->
+                    <td>
+                        <!-- debemos pasar un identificador para el DetailView, empleado.id -->
+                        <a class="button primary" style="border-radius: 8px" href="{% url 'persona_app:detail_empleado' empleado.id %}">Ver</a>
+                    </td>
+                  </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- paginación -->
+        <div class="cell">
+            
+            {% if is_paginated %}
+                <nav aria-label="Pagination">
+                    <ul class="pagination">
+                        
+                        <!-- página hacia atras -->
+                        {% if page_obj.has_previous %}
+                            <li class="pagination-previous">
+                                <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                            </li>        
+                        {% endif %}
+                                                
+                        <!-- número de páginas de todo el listado -->
+                        {% for pagina in paginator.page_range %}                        
+                        <!-- comparación -->
+                        {% if pagina == page_obj.number %} 
+                        <li class="current"><span class="show-for-sr">You're on page</span>{{ pagina }}</li>
+                        {% else %}
+                        <li class=""><a href="?page={{ pagina }}">{{ pagina }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                        
+                        <!-- página siguiente -->
+                        {% if page_obj.has_next %}
+                        <li class="pagination-next">
+                            <a href="?page={{ page_obj.next_page_number }}" >Next</a>
+                        </li>                            
+                        {% endif %}
+
+                    </ul>
+                </nav>                
+            {% endif %}
+                
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+<!-- Lista de todos los empleados -->
 <!-- a través de un context_object_name en la view -->
 <!-- {{ lista }} -->
 
 <!-- sin incluir un context_object_name en la view -->
 <!-- {{ object_list }} -->
 
+<!--
+<h1>Lista de todos los empleados</h1>
+    
 <ul>
     {% for empleado in object_list %}
         <li>{{ empleado }}</li>
     {% endfor %}
 </ul>
+-->
 
-</body>
-</html>
+<!-- 
+{% for empleado in object_list %} 
+{% endfor %}
+-->
