@@ -68,14 +68,30 @@
                 <nav aria-label="Pagination">
                     <ul class="pagination">
                         
+                        <!-- página hacia atras -->
                         {% if page_obj.has_previous %}
-                        <li class="pagination-previous">Previous <span class="show-for-sr">page</span></li>        
+                            <li class="pagination-previous">
+                                <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                            </li>        
                         {% endif %}
-                            
-                    
-                    <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-                    <li><a href="#" aria-label="Page 2">2</a></li>
-                    <li class="pagination-next"><a href="#" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+                                                
+                        <!-- número de páginas de todo el listado -->
+                        {% for pagina in paginator.page_range %}                        
+                        <!-- comparación -->
+                        {% if pagina == page_obj.number %} 
+                        <li class="current"><span class="show-for-sr">You're on page</span>{{ pagina }}</li>
+                        {% else %}
+                        <li class=""><a href="?page={{ pagina }}">{{ pagina }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                        
+                        <!-- página siguiente -->
+                        {% if page_obj.has_next %}
+                        <li class="pagination-next">
+                            <a href="?page={{ page_obj.next_page_number }}" >Next</a>
+                        </li>                            
+                        {% endif %}
+
                     </ul>
                 </nav>                
             {% endif %}
