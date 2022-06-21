@@ -44,7 +44,8 @@
                     <td>{{ empleado.departamento }}</td>
                     <!-- ACCION -->
                     <td>
-                        <a class="button primary" style="border-radius: 8px" href="#">Ver</a>
+                        <!-- debemos pasar un identificador para el DetailView, empleado.id -->
+                        <a class="button primary" style="border-radius: 8px" href="{% url 'persona_app:detail_empleado' empleado.id %}">Ver</a>
                     </td>
                   </tr>
                     {% endfor %}
