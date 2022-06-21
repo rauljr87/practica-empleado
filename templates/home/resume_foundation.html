@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/foundation.min.css' %}">
+    <title>Resumen Foundation View</title>
+</head>
+<body>
+<h1>Prueba Foundation</h1>
+
+<!-- 
+grid-x, convierte el lienzo de foundation
+cell, hace a los elementos parte del lienzo
+large, indica pantalla grande como pc
+large-# de columnas, large-5, large-8
+cell grid-x
+-->
+<div class="grid-x" style="border: 1px solid green;">
+    <h2 class="cell small-12 large-5" style="border: 1px solid yellow;">elemento 1</h2>
+    <h2 class="cell large-4" style="border: 1px solid red;">elemento 2</h2>
+    <h2 class="cell large-3" style="border: 1px solid purple">elemento 3</h2>
+
+    <div class="cell large-4 grid-x" style="border: 1px solid blue">
+        <h4 class="cell large-2">otro elemento 1</h4>
+        <h4 class="cell large-2">otro elemento 2</h4>
+        <h4 class="cell">otro elemento 3</h4>
+    </div>
+</div>
+
+</body>
+</html>

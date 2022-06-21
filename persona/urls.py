@@ -11,12 +11,15 @@ from .views import (
     SuccessView,
     EmpleadoUpdateView,
     EmpleadoDeleteView,
+    InicioTemplateView,
 )
 
 
 app_name = 'persona_app'
 
 urlpatterns = [
+    # Inicio TemplateView
+    path('', InicioTemplateView.as_view(), name='inicio'),   
     path('list_all/', ListAllEmpleados.as_view(), name='list_all'),
     # ListView
     # short_name, variable declarada para aplicar filtro de empleados por departamento

@@ -22,12 +22,25 @@ class ListAllEmpleados(ListView):
     """ Lista todos los empleados de la empresa """
 
     template_name = 'persona/list_all.html'
-    model = Empleado
+    # se comenta model ya que se sobre escribe el método get_queryset
+    # model = Empleado
     # paginación por bloques de 4
     paginate_by = 4
     ordering = 'first_name'
     # variable para el template
-    # context_object_name = 'lista'
+    context_object_name = 'empleados'
+
+    def get_queryset(self):
+        """ Captura el texto enviado por el input a través del form, method GET REQUEST """
+
+        # kword, id capturado del GET REQUEST enviado por el input del formulario en el template
+        palabra_clave = self.request.GET.get("kword", '')
+        lista = Empleado.objects.filter(
+            # filtro queryset por full_name a modelo Empleado
+            first_name__icontains=palabra_clave
+        )
+
+        return lista
 
 
 # 2.- Listar todos los empleados que pertenecen a una área de la empresa
@@ -163,6 +176,12 @@ class SuccessView(TemplateView):
     """ Muestra una página una vez creado un registro """
 
     template_name = "persona/success.html"
+
+
+class InicioTemplateView(TemplateView):
+    """ Vista que carga la página de inicio """
+
+    template_name = 'inicio.html'
 
 
 # CREATEVIEW
