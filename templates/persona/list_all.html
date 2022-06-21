@@ -11,9 +11,13 @@
 {% block content %}
 {% include 'includes/header.html' %}
 
+<!-- grid contenedor -->
 <div class="grid-container">
+    <!-- lienzo grid x-->
     <div class="grid-x">
+        <!-- celda hija de grid-x -->
         <h1 class="cell">Lista Empleados</h1>
+        <!-- Formulario -->
         <!-- el form activa las opciones de input y button por html -->
         <form class="cell grid-x grid-margin-x" method="GET">
             {% csrf_token %}
@@ -24,6 +28,7 @@
                 <button class="submit success button" style="border-radius: 8px">Buscar</button>
             </div>
         </form>
+        <!-- celda hija de grid-x que muestra las consultas en tabla de resultados -->
         <div class="cell">
             <table>
                 <thead>
@@ -52,7 +57,24 @@
                 </tbody>
             </table>
         </div>
+        <!-- paginación -->
+        <div class="cell">
+            <nav aria-label="Pagination">
+                <ul class="pagination">
+                  <li class="pagination-previous disabled">Previous <span class="show-for-sr">page</span></li>
+                  <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+                  <li><a href="#" aria-label="Page 2">2</a></li>
+                  <li><a href="#" aria-label="Page 3">3</a></li>
+                  <li><a href="#" aria-label="Page 4">4</a></li>
+                  <li class="ellipsis" aria-hidden="true"></li>
+                  <li><a href="#" aria-label="Page 12">12</a></li>
+                  <li><a href="#" aria-label="Page 13">13</a></li>
+                  <li class="pagination-next"><a href="#" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+                </ul>
+              </nav>
+        </div>
     </div>
+</div>
 
 {% endblock content %}
 
