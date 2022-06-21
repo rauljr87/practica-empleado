@@ -28,7 +28,7 @@ class ListAllEmpleados(ListView):
     paginate_by = 4
     ordering = 'first_name'
     # variable para el template
-    # context_object_name = 'lista'
+    context_object_name = 'empleados'
 
     def get_queryset(self):
         """ Captura el texto enviado por el input a través del form, method GET REQUEST """
