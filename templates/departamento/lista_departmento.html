@@ -1,13 +1,17 @@
+<!-- herencia de base.html -->
 {% extends 'base.html' %}
 
 
+<!-- título -->
 {% block title %}
     Lista Departamentos
 {% endblock title %}
 
 
-
+<!-- body -->
 {% block content %}
+    
+    <!-- incluir cabecera -->
     {% include 'includes/header.html' %}
 
     <div class="grid-container">

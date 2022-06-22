@@ -50,6 +50,7 @@ class ListByAreaEmpleado(ListView):
     """ Lista todos los empleados de la empresa por su área """
 
     template_name = 'persona/list_by_area.html'
+    context_object_name = 'empleados'
     # filtro a través de un queryset
     # queryset = Empleado.objects.filter(
     #    # filtro queryset por short_name a departamento
