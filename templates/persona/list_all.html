@@ -8,11 +8,15 @@
 {% endblock title %}
     
 
+<!-- contenido -->
 {% block content %}
+<!-- incluye la cabecera -->
 {% include 'includes/header.html' %}
+
 
 <!-- grid contenedor -->
 <div class="grid-container">
+
     <!-- lienzo grid x-->
     <div class="grid-x">
         
@@ -22,6 +26,7 @@
         <!-- Formulario -->
         <!-- el form activa las opciones de input y button por html -->
         <form class="cell grid-x grid-margin-x" method="GET">
+            <!-- llave de seguridad para negociación http -->
             {% csrf_token %}
             <div class="cell large-5">
                 <input type="text" id="kword" name="kword" placeholder="Buscar empleado">
@@ -44,6 +49,7 @@
                   </tr>
                 </thead>
                 <tbody>
+                    <!-- object_list = empleados, empleados es la variable declarada en view ListAllEmpleado -->
                     {% for empleado in empleados %}
                   <tr>
                     <td>{{ empleado.id }}</td>
@@ -64,6 +70,7 @@
         <!-- paginación -->
         <div class="cell">
             
+            <!-- la piganicón es declarada en la view ListAllEmpleado mediante, paginate_by = 4 -->
             {% if is_paginated %}
                 <nav aria-label="Pagination">
                     <ul class="pagination">

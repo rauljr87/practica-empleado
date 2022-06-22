@@ -11,8 +11,7 @@ from .forms import NewDepartamentoForm
 
 class NewDepartamentoView(FormView):
     """
-    Crea un departamento con un empleado por medio de formulario
-    que no depende de un modelo
+    Crea un departamento con un empleado por medio de formulario que no depende de un modelo 
     """
 
     template_name = "departamento/new_departamento.html"
