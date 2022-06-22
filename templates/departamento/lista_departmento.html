@@ -24,7 +24,9 @@
                             <td>{{ departamento.name }}</td>
                             <td>{{ departamento.short_name }}</td>
                             <td>
-                                <a class="button primary" style="border-radius: 8px" href="#">Ver empleado</a>
+                                <!-- url para filtrar empleados por su departamento -->
+                                <!-- departamento.short_name, es el kwarg por url que al método get_queryset de la class ListByAreaEmpleado -->
+                                <a class="button primary" style="border-radius: 8px" href="{% url 'persona_app:list_by_area' departamento.short_name %}">Ver empleado</a>
                             </td>
                         </tr>
                         {% endfor %}
