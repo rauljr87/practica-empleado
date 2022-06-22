@@ -15,6 +15,8 @@ from django.views.generic import ListView
 class DepartamentoListView(ListView):
     template_name = "departamento/lista_departmento.html"
     model = Departamento
+    # variable
+    context_object_name = 'departamentos'
 
 
 
