@@ -7,7 +7,7 @@
         <!-- url de App persona, persona_app / list_all -->
         <li><a href="{% url 'persona_app:list_all' %}">Listar</a></li>
         <li><a href="{% url 'departamento_app:lista_departamento' %}">Departamentos</a></li>
-        <li><a href="#">Administrar</a></li>
+        <li><a href="{% url 'persona_app:list_admin_empleados' %}">Administrar</a></li>
       </ul>
     </div>
     <div class="top-bar-right">
