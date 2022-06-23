@@ -1,24 +1,96 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Empleado</title>
-</head>
-<body>
-<h1>Creación de objeto empleado</h1>
+<!-- herencia base.html -->
+
+{% extends 'base.html' %}
+
+
+<!-- título -->
+
+{% block title %}
+    Crear_nuevo_empleado
+{% endblock title %}
+
+
+<!-- body -->
+
+{% block content %}
+
+
+    <!-- cabecera -->
+
+    {% include 'includes/header.html' %}
+    
+
+    <!-- contenido -->
+
+    <div class="grid-container">
+        <div class="grid-x">
+            <h1 class="cell">Crear nuevo empleado</h1>
+            <p>Ingrese los datos a continuación:</p>
+
+            <div class="cell">
+
+                <!--
+                enctype="multipart/form-data", para indicar que el form html acepte otro tipo de archivos,
+                imágenes por ejemplo, si no, al momento de registrar, estas no se reflejarán en el admin
+                -->
+                <form class="grid-x grid-margin-x" method="POST" enctype="multipart/form-data">
+
+                    <!-- llave de seguridad para negociación http -->
+                    {% csrf_token %}
+
+                    <div class="cell large-6">
+                        <label>Nombres:
+                            {{ form.first_name }}
+                        </label>
+                    </div>
+                    <div class="cell large-6">
+                        <label>Apellidos:
+                            {{ form.last_name }}
+                        </label>
+                    </div>
+                    <div class="cell large-6">
+                        <label>Trabajo:
+                            {{ form.job }}
+                        </label>
+                    </div>
+                    <div class="cell large-6">
+                        <label>Departamento:
+                            {{ form.departamento }}
+                        </label>
+                    </div>
+                    <div class="cell large-12">
+                        <label>Habilidades extra:
+                            {{ form.habilidades }}
+                        </label>
+                    </div>
+                    <div class="cell large-12">
+                        <label>Imagen:
+                            {{ form.avatar }}
+                        </label>
+                    </div>
+                    <div class="cell">
+                        <button type="submit" class="submit success button" style="border-radius: 8px">Guardar</button>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    
+
 <!--
 <input type="text" placeholder="nombre">
 <input type="text" placeholder="apellido">
 -->
 
-<form method="POST">
+ 
+<!-- <form method="POST"> -->
     <!-- llave de seguridad para negociación http -->
-    {% csrf_token %}
+<!--  {% csrf_token %}
 
     {{ form.as_p }}
 
     <button  type="submit">Agregar</button>
 </form>
-
-</body>
-</html>
+-->
