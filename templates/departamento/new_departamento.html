@@ -26,13 +26,14 @@
         <div class="grid-x">
             <h1 class="cell">Registrar nuevo departamento</h1>
             
-            <form class="grid-x grid-margin-x" method="POST">
+            <form class="cell callout grid-x grid-margin-x" method="POST">
                 
                 <!-- llave de seguridad para negociación html -->
                 {% csrf_token %}
 
                 <p class="cell">Datos del Empleado</p>
                 
+                <!-- elementos copiados del formulario -->
                 <div class="cell large-6">
                     <label>Nombres:
                         {{ form.nombre }}
