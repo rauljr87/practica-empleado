@@ -287,4 +287,8 @@ class EmpleadoUpdateView(UpdateView):
 class EmpleadoDeleteView(DeleteView):
     template_name = "persona/delete_empleado.html"
     model = Empleado
-    success_url = reverse_lazy('persona_app:success')
+
+    # redirecciona url
+
+    # success_url = reverse_lazy('persona_app:success')
+    success_url = reverse_lazy('persona_app:list_admin_empleados')

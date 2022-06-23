@@ -1,19 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Delete empleado</title>
-</head>
-<body>
-<h1>Elimina un registro de empleado, estas seguro?!!</h1>
+<!-- herencia base.html -->
 
-<form method="POST">
-    <!-- security key to negotiation html -->
-    {% csrf_token %}
+{% extends 'base.html' %}
 
-    <p>Confirme que desea eliminar</p>
-    <button type="submit">Confirmar</button>
-</form>
 
-</body>
-</html>
+<!--título -->
+
+{% block title %}
+    Elimina_empleados
+{% endblock title %}
+
+
+<!-- body -->
+
+{% block content %}
+    
+    <!-- cabecera -->
+
+    {% include 'includes/header.html' %}
+
+
+    <!-- contenido -->
+
+    <div class="grid-container">
+        <div class="gird-x">
+            <h1 class="cell">Eliminar empleado: {{ object.full_name }}</h1>
+            
+            <form class="cell" method="POST">
+
+                <!-- llave de seguridad para negociación http -->
+                {% csrf_token %}
+
+                <div class="callout alert">
+                    <h5>¿Desea eliminar este empleado?</h5>
+                    <p>Recuerde que, al elimnar el empleado perderá todos los datos</p>
+                    <button type="submit" class="alert button" style="border-radius: 8px">Confirmar</button>
+                </div>
+
+            </form>    
+
+        </div>
+    </div>
+
+{% endblock content %}
