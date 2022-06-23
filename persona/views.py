@@ -215,20 +215,32 @@ class EmpleadoCreateView(CreateView):
         'departamento',
         'habilidades',
     ]
+
     # todos los fields
+
     # fields = ('__all__')
+    
     # url cuando form exitoso, misma page
+    
     # success_url = '.'
+    
     # url cuando form exitoso
+    
     # success_url = '/success'
+    
     # url cuando form exitoso, name
-    success_url = reverse_lazy('persona_app:success')
+
+    # redirecciona url
+
+    # success_url = reverse_lazy('persona_app:success')
+    success_url = reverse_lazy('persona_app:list_admin_empleados')
 
     # proceso previo al guardado de datos
     def form_valid(self, form):
         """ crear full name a partir de first_name y last_name """
 
         # instancia temporalmente la variable empleado
+        
         empleado = form.save(commit=False)
         print(empleado)
         empleado.full_name = empleado.first_name + ' ' + empleado.last_name
