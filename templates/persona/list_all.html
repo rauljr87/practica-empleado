@@ -1,19 +1,26 @@
 <!-- herencia de base.html -->
+
 {% extends 'base.html' %}
 
 
 <!-- título de la página -->
+
 {% block title %}
     Lista_todos_empleados
 {% endblock title %}
     
 
 <!-- contenido -->
+
 {% block content %}
 
+
     <!-- incluye la cabecera -->
+    
     {% include 'includes/header.html' %}
 
+
+    <!-- contenido -->
 
     <!-- grid contenedor -->
     <div class="grid-container">
@@ -24,7 +31,9 @@
             <!-- celda hija de grid-x -->
             <h1 class="cell">Lista Empleados</h1>
 
+
             <!-- FORMULARIO -->
+
             <!-- el form activa las opciones de input y button por html -->
             <form class="cell grid-x grid-margin-x" method="GET">
                 <!-- llave de seguridad para negociación http -->
@@ -57,7 +66,10 @@
                                 <td>{{ empleado.first_name }}</td>
                                 <td>{{ empleado.last_name }}</td>
                                 <td>{{ empleado.departamento }}</td>
+
+
                                 <!-- ACCION -->
+
                                 <td>
                                     <!-- debemos pasar un identificador para el DetailView, empleado.id -->
                                     <a class="button primary" style="border-radius: 8px" href="{% url 'persona_app:detail_empleado' empleado.id %}">Ver</a>
@@ -68,7 +80,9 @@
                 </table>
             </div>
 
+
             <!-- PAGINACIÓN -->
+
             <div class="cell">
                 
                 <!-- la piganicón es declarada en la view ListAllEmpleado mediante, paginate_by = 4 -->
@@ -85,19 +99,20 @@
                                                     
                             <!-- número de páginas de todo el listado -->
                             {% for pagina in paginator.page_range %}                        
-                            <!-- comparación -->
-                            {% if pagina == page_obj.number %} 
-                            <li class="current"><span class="show-for-sr">You're on page</span>{{ pagina }}</li>
-                            {% else %}
-                            <li class=""><a href="?page={{ pagina }}">{{ pagina }}</a></li>
-                            {% endif %}
+                            
+                                <!-- comparación -->
+                                {% if pagina == page_obj.number %} 
+                                <li class="current"><span class="show-for-sr">You're on page</span>{{ pagina }}</li>
+                                {% else %}
+                                <li class=""><a href="?page={{ pagina }}">{{ pagina }}</a></li>
+                                {% endif %}
                             {% endfor %}
                             
                             <!-- página siguiente -->
                             {% if page_obj.has_next %}
-                            <li class="pagination-next">
-                                <a href="?page={{ page_obj.next_page_number }}" >Next</a>
-                            </li>                            
+                                <li class="pagination-next">
+                                    <a href="?page={{ page_obj.next_page_number }}" >Next</a>
+                                </li>                            
                             {% endif %}
 
                         </ul>
