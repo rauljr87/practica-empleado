@@ -253,7 +253,11 @@ class EmpleadoUpdateView(UpdateView):
         'departamento',
         'habilidades',
     ]
-    success_url = reverse_lazy('persona_app:success')
+
+    # redirecciona url
+
+    # success_url = reverse_lazy('persona_app:success')
+    success_url = reverse_lazy('persona_app:list_admin_empleados')
 
     # procesos previos al guardado de datos
     def post(self, request, *args, **kwargs):
