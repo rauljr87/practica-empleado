@@ -15,6 +15,21 @@ from .models import Empleado
 # LISTVIEW
 
 
+# Administrador de empleados
+
+
+class ListAllEmpleadosAdmin(ListView):
+    """ Lista todos los empleados de la empresa en página de administrar """
+
+    template_name = 'persona/list_admin_empleados.html'
+    model = Empleado
+    # paginación por bloques de 4
+    paginate_by = 6
+    ordering = 'first_name'
+    # variable para el template
+    context_object_name = 'empleados'
+
+
 # 1.- Listar todos los empleados de la empresa.
 
 
