@@ -1,30 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>New Departamento</title>
-</head>
-<body>
-<h1>Registrar nuevo departamento</h1>
+<!-- herencia base.html -->
 
-<form method="POST">
-    <!-- security key to negotiation html -->
-    {% csrf_token %}
+{% extends 'base.html' %}
 
-    <hr>
 
-    <h3>Datos Empleado</h3>
-    <p>{{ form.nombre }}</p>
-    <p>{{ form.apellido }}</p>
+<!-- título -->
 
-    <hr>
+{% block title %}
+    Crear_nuevo_departamento
+{% endblock title %}
+    
 
-    <h3>Datos Departamento</h3>
-    <p>{{ form.departamento }}</p>
-    <p>{{ form.short_name }}</p>
+<!-- body -->
 
-    <button type="submit">Guardar</button>
-</form>
+{% block content %}
+    
 
-</body>
-</html>
+    <!-- cabecera -->
+
+    {% include 'includes/header.html' %}
+
+
+    <!-- contenido -->
+
+    <div class="grid-container">
+        <div class="grid-x">
+            <h1 class="cell">Registrar nuevo departamento</h1>
+            
+            <form class="grid-x grid-margin-x" method="POST">
+                
+                <!-- llave de seguridad para negociación html -->
+                {% csrf_token %}
+
+                <p class="cell">Datos del Empleado</p>
+                
+                <div class="cell large-6">
+                    <label>Nombres:
+                        {{ form.nombre }}
+                    </label>
+                </div>
+                <div class="cell large-6">
+                    <label>Apellidos:
+                        {{ form.apellido }}
+                    </label>
+                </div>
+
+                <p class="cell">Datos del Area/Departamento</p>
+                
+                <div class="cell large-6">
+                    <label>Area/Departamento:
+                        {{ form.departamento }}
+                    </label>
+                </div>
+                <div class="cell large-6">
+                    <label>Nombre corto:
+                        {{ form.short_name}}
+                    </label>
+                </div>
+                <div class="cell">
+                    <button type="submit" class="submit success button" style="border-radius: 8px">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+{% endblock content %}
