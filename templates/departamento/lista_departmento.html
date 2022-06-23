@@ -1,18 +1,26 @@
-<!-- herencia de base.html -->
+<!-- herencia base.html -->
+
 {% extends 'base.html' %}
 
 
 <!-- título -->
+
 {% block title %}
     Lista Departamentos
 {% endblock title %}
 
 
 <!-- body -->
+
 {% block content %}
-    
-    <!-- incluir cabecera -->
+
+
+    <!-- cabecera -->
+
     {% include 'includes/header.html' %}
+
+
+    <!-- contenido -->
 
     <div class="grid-container">
         <div class="grid-x">
@@ -38,6 +46,7 @@
                     </tbody>
                 </table>
             </div>
+            
         </div>
     </div>
 

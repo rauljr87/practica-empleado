@@ -208,7 +208,6 @@ class EmpleadoCreateView(CreateView):
 
     template_name = 'persona/add_empleado.html'
     model = Empleado
-    # field específicos
     fields = [
         'first_name',
         'last_name',
