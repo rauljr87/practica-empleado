@@ -214,6 +214,7 @@ class EmpleadoCreateView(CreateView):
         'job',
         'departamento',
         'habilidades',
+        'avatar',
     ]
 
     # todos los fields
@@ -240,7 +241,7 @@ class EmpleadoCreateView(CreateView):
         """ crear full name a partir de first_name y last_name """
 
         # instancia temporalmente la variable empleado
-        
+
         empleado = form.save(commit=False)
         print(empleado)
         empleado.full_name = empleado.first_name + ' ' + empleado.last_name

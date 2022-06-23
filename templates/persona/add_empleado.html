@@ -28,7 +28,12 @@
             <p>Ingrese los datos a continuación:</p>
 
             <div class="cell">
-                <form class="grid-x grid-margin-x" method="POST">
+
+                <!--
+                enctype="multipart/form-data", para indicar que el form html acepte otro tipo de archivos,
+                imágenes por ejemplo, si no, al momento de registrar, estas no se reflejarán en el admin
+                -->
+                <form class="grid-x grid-margin-x" method="POST" enctype="multipart/form-data">
 
                     <!-- llave de seguridad para negociación http -->
                     {% csrf_token %}
@@ -56,6 +61,11 @@
                     <div class="cell large-12">
                         <label>Habilidades extra:
                             {{ form.habilidades }}
+                        </label>
+                    </div>
+                    <div class="cell large-12">
+                        <label>Imagen:
+                            {{ form.avatar }}
                         </label>
                     </div>
                     <div class="cell">
