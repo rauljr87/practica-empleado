@@ -26,18 +26,42 @@
             <h1 class="cell">Actualización de empleado</h1>
 
             <div class="cell">
-                <form method="POST">
+                <form class="grid-x grid-margin-x" method="POST">
 
                     <!-- llave de seguridad para negociación http -->
                     {% csrf_token %}
-                
-                    {{ form.as_p }}
-                
-                    <button type="submit">Actualizar</button>
+
+                    <div class="cell large-6">
+                        <label>Nombres:
+                            {{ form.first_name }}
+                        </label>
+                    </div>
+                    <div class="cell large-6">
+                        <label>Apellidos:
+                            {{ form.last_name }}
+                        </label>
+                    </div>
+                    <div class="cell large-6">
+                        <label>Trabajo:
+                            {{ form.job }}
+                        </label>
+                    </div>
+                    <div class="cell large-6">
+                        <label>Departamento:
+                            {{ form.departamento }}
+                        </label>
+                    </div>
+                    <div class="cell large-6">
+                        <label>Habilidades extra:
+                            {{ form.habilidades }}
+                        </label>
+                    </div>
+                    <div class="cell">
+                        <button type="submit" class="submit success button" style="border-radius: 8px">Guardar</button>
+                    </div>
                 </form>
             </div>
 
         </div>
     </div>
 {% endblock content %}
-    
