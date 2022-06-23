@@ -4,6 +4,21 @@ from departamento.models import Departamento
 # vista genérica para trabajar con formulario que no vinculados con un modelo directamente
 from django.views.generic.edit import FormView
 from .forms import NewDepartamentoForm
+# vista genérica
+from django.views.generic import ListView
+
+
+#LISTVIEW
+
+
+
+class DepartamentoListView(ListView):
+    template_name = "departamento/lista_departmento.html"
+    model = Departamento
+    # variable
+    context_object_name = 'departamentos'
+
+
 
 
 # FORMVIEW
@@ -11,8 +26,7 @@ from .forms import NewDepartamentoForm
 
 class NewDepartamentoView(FormView):
     """
-    Crea un departamento con un empleado por medio de formulario
-    que no depende de un modelo
+    Crea un departamento con un empleado por medio de formulario que no depende de un modelo 
     """
 
     template_name = "departamento/new_departamento.html"

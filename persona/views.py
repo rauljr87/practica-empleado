@@ -15,6 +15,21 @@ from .models import Empleado
 # LISTVIEW
 
 
+# Administrador de empleados
+
+
+class ListAllEmpleadosAdmin(ListView):
+    """ Lista todos los empleados de la empresa en página de administrar """
+
+    template_name = 'persona/list_admin_empleados.html'
+    model = Empleado
+    # paginación por bloques de 4
+    paginate_by = 6
+    ordering = 'first_name'
+    # variable para el template
+    context_object_name = 'empleados'
+
+
 # 1.- Listar todos los empleados de la empresa.
 
 
@@ -50,6 +65,7 @@ class ListByAreaEmpleado(ListView):
     """ Lista todos los empleados de la empresa por su área """
 
     template_name = 'persona/list_by_area.html'
+    context_object_name = 'empleados'
     # filtro a través de un queryset
     # queryset = Empleado.objects.filter(
     #    # filtro queryset por short_name a departamento
@@ -192,7 +208,6 @@ class EmpleadoCreateView(CreateView):
 
     template_name = 'persona/add_empleado.html'
     model = Empleado
-    # field específicos
     fields = [
         'first_name',
         'last_name',
@@ -237,7 +252,11 @@ class EmpleadoUpdateView(UpdateView):
         'departamento',
         'habilidades',
     ]
-    success_url = reverse_lazy('persona_app:success')
+
+    # redirecciona url
+
+    # success_url = reverse_lazy('persona_app:success')
+    success_url = reverse_lazy('persona_app:list_admin_empleados')
 
     # procesos previos al guardado de datos
     def post(self, request, *args, **kwargs):
@@ -267,4 +286,8 @@ class EmpleadoUpdateView(UpdateView):
 class EmpleadoDeleteView(DeleteView):
     template_name = "persona/delete_empleado.html"
     model = Empleado
-    success_url = reverse_lazy('persona_app:success')
+
+    # redirecciona url
+
+    # success_url = reverse_lazy('persona_app:success')
+    success_url = reverse_lazy('persona_app:list_admin_empleados')
