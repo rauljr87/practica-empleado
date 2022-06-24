@@ -26,7 +26,7 @@ class EmpleadoAdmin(admin.ModelAdmin):
         return obj.first_name + ' ' + obj.last_name
 
     # search
-    search_fields = ('first_name',)
+    search_fields = ('first_name', 'last_name',)
     # filter
     list_filter = ('departamento', 'job', 'habilidades',)
     # filtro horizontal solo sirve para many to many
