@@ -5,26 +5,26 @@
     <title>List by habilidades</title>
 </head>
 <body>
-<h1>Lista de empleados por habilidades</h1>
+    <h1>Lista de empleados por habilidades</h1>
 
-<form method="GET">
+    <form method="GET">
 
-    <!-- llave de seguridad para negociación http -->
-    {% csrf_token %}
+        <!-- llave de seguridad para negociación http -->
+        {% csrf_token %}
 
-    <!-- id = habilidad, id que usará la view ListHabilidadesEmpleado para capturar el GET REQUEST enviado por el
-     input del formulario -->
-    <input name="habilidad" type="text" id="habilidad" placeholder="Ingrese ID aquí">
-    <button type="submit">Buscar</button>
-</form>
+        <!-- id = habilidad, id que usará la view ListHabilidadesEmpleado para capturar el GET REQUEST enviado por el
+        input del formulario -->
+        <input name="habilidad" type="text" id="habilidad" placeholder="Ingrese ID aquí">
+        <button type="submit">Buscar</button>
+    </form>
 
-<br>
+    <br>
 
-<lu>
-    {% for habilidad in habilidades %}
-        <li>{{ habilidad }}</li>
-    {% endfor %}
-</lu>
+    <lu>
+        {% for habilidad in habilidades %}
+            <li>{{ habilidad }}</li>
+        {% endfor %}
+    </lu>
 
 </body>
 </html>
