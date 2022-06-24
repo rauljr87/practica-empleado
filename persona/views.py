@@ -179,8 +179,8 @@ class EmpleadoDetailView(DetailView):
         """ envía alguna variable extra al template """
 
         context = super(EmpleadoDetailView, self).get_context_data(**kwargs)
-        # variable de aumento en el template
-        context['titulo'] = 'Empleado del mes'
+        # variable de aumento en el template, indica el valor en la página.
+        context['titulo'] = 'Empleado'
 
         return context
 
