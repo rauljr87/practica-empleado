@@ -1,5 +1,12 @@
-# personalizaciones para los campos de nuestro modelo que se mostrara en el template
+"""
+- Formularios tipo ModelForm, que dependen de un modelo en particular.
+- Formularios simples, que no dependen de un modelo en específico.
+"""
+
+# Personalizaciones para los campos de nuestro modelo que se mostrara en, el template.
+# Importar formulario de django
 from django import forms
+# importar modelo para el formulario
 from .models import Prueba
 
 
@@ -17,8 +24,7 @@ class PruebaForm(forms.ModelForm):
             'subtitulo',
             'cantidad',
         )
-
-        # widgets, personalización
+        # personalización de attributes, placeholder
         widgets = {
             'titulo': forms.TextInput(
                 attrs={
@@ -29,14 +35,17 @@ class PruebaForm(forms.ModelForm):
 
     def clean_cantidad(self):
         """
-        valida cantidad
-        prefijo clean, obligatorio
+        - Validación de cantidad
+        - Prefijo clean, obligatorio
         """
 
         # recuperar objeto cantidad
         cantidad = self.cleaned_data['cantidad']
-
+        # validación de cantidad
         if cantidad < 10:
+            # dato incorrecto
             raise forms.ValidationError('Ingrese un número mayor a 10')
 
         return cantidad
+
+# importar este formulario en las views de la app

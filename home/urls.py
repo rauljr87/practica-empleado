@@ -10,6 +10,7 @@ from .views import (
 
 app_name = 'home_app'
 
+
 urlpatterns = [
     path('prueba/', PruebaView.as_view(), name='prueba'),
     path('lista/', PruebaListView.as_view(), name='lista'),

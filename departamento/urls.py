@@ -5,7 +5,9 @@ from .views import NewDepartamentoView, DepartamentoListView
 # def prueba(self):
 #    return print("Prueba")
 
+
 app_name = 'departamento_app'
+
 
 urlpatterns = [
     # path('', prueba, name='prueba'),

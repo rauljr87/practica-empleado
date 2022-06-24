@@ -2,9 +2,6 @@ from django.contrib import admin
 from .models import Empleado, Habilidades
 
 
-admin.site.register(Habilidades)
-
-
 # Clase para decorador modelos registrados
 
 
@@ -21,7 +18,7 @@ class EmpleadoAdmin(admin.ModelAdmin):
         'full_name',
     )
 
-    # función para campo externo
+    # función para campo externo, parámetro el objeto del modelo
     def full_name(self, obj):
         """ Función para habilitar campo externo, la función debe tener el mismo nombre del campo externo"""
 
@@ -30,13 +27,13 @@ class EmpleadoAdmin(admin.ModelAdmin):
 
     # search
     search_fields = ('first_name',)
-
     # filter
     list_filter = ('departamento', 'job', 'habilidades',)
-
     # filtro horizontal solo sirve para many to many
     filter_horizontal = ('habilidades',)
 
 
-# registro de model empleado
+# registro de model Empleado y class EmpleadoAdmin para decorar
 admin.site.register(Empleado, EmpleadoAdmin)
+# registro de model Habilidades
+admin.site.register(Habilidades)

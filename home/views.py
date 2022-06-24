@@ -1,5 +1,5 @@
 from django.shortcuts import render
-# vistas genéricas
+# generic views
 from django.views.generic import (
     TemplateView,
     ListView,
@@ -7,7 +7,7 @@ from django.views.generic import (
 )
 # models
 from .models import Prueba
-# forms
+# forms, asignarlo a la vista que está haciendo el CreateView
 from .forms import PruebaForm
 
 
@@ -18,6 +18,8 @@ class PruebaView(TemplateView):
 
 
 class ResumeFoundationView(TemplateView):
+    """ prueba de grids de framework css foundation """
+
     template_name = "home/resume_foundation.html"
 
 
@@ -25,7 +27,7 @@ class PruebaListView(ListView):
     """ Lista un variable queryset """
 
     template_name = 'home/lista.html'
-    # variable para el template
+    # variable para llamar desde el template
     context_object_name = 'listaNumeros'
     queryset = ['0', '10', '20', '30']
 
@@ -35,7 +37,7 @@ class ListarPrueba(ListView):
 
     template_name = "home/lista_prueba.html"
     model = Prueba
-    # variable para el template
+    # variable para llamar desde el template
     context_object_name = 'lista'
 
 
@@ -44,6 +46,9 @@ class PruebaCreateView(CreateView):
 
     template_name = "home/add.html"
     model = Prueba
+    # se anulan el atributo fields, ya que estamos trabajando con el form
+    # atributo para usar el formulario
     form_class = PruebaForm
+    # url para cuando formulario exitoso
     # success_url = '.'
     success_url = '/'

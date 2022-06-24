@@ -1,17 +1,22 @@
 <!-- herencia de base.html-->
+
 {% extends 'base.html' %}
 
 
 <!-- título -->
+
 {% block title %}
     Lista_administrador_empleados
 {% endblock title %}
 
 
 <!-- body -->
+
 {% block content %}
     
+
     <!-- cabecera -->
+
     {% include 'includes/header.html' %}
 
     <div class="grid-container">
@@ -38,7 +43,9 @@
                                 <td>{{ empleado.first_name }}</td>
                                 <td>{{ empleado.last_name }}</td>
                                 <td>{{ empleado.departamento }}</td>
+                                
                                 <!-- ACCION -->
+                                
                                 <td>
                                     <a class="button success" style="border-radius: 8px" href="{% url 'persona_app:update_empleado' empleado.id %}">Editar</a>
                                 </td>
@@ -52,7 +59,9 @@
                 </table>
             </div>
 
+
             <!-- PAGINACIÓN-->
+            
             <div class="cell">
                 
                 <!-- la piganicón es declarada en la view ListAllEmpleadosAdmin mediante, paginate_by = 6 -->
