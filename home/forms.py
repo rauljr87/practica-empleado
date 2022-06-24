@@ -24,7 +24,7 @@ class PruebaForm(forms.ModelForm):
             'subtitulo',
             'cantidad',
         )
-        # personalización de attributes
+        # personalización de attributes, placeholder
         widgets = {
             'titulo': forms.TextInput(
                 attrs={

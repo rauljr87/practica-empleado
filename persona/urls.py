@@ -20,10 +20,15 @@ app_name = 'persona_app'
 
 urlpatterns = [
     # Inicio TemplateView
+
     path('', InicioTemplateView.as_view(), name='inicio'),
+
     # TemplateView
+
     path('success/', SuccessView.as_view(), name='success'),
+
     # ListView
+
     path('list_admin_empleados/', ListAllEmpleadosAdmin.as_view(), name='list_admin_empleados'),
     path('list_all/', ListAllEmpleados.as_view(), name='list_all'),
     # short_name, variable declarada para aplicar filtro de empleados por departamento

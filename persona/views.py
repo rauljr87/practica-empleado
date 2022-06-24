@@ -125,17 +125,13 @@ class ListEmpleadosByKword(ListView):
         """ Captura el texto enviado por el input a través del form, method GET REQUEST """
 
         print('######################')
-
         # kword, id capturado del GET REQUEST enviado por el input del formulario en el template
         palabra_clave = self.request.GET.get("kword",)
-
         print('===========', palabra_clave)
-
         lista = Empleado.objects.filter(
             # filtro queryset por first_name a modelo Empleado
             first_name=palabra_clave
         )
-
         print('##################')
         print('Lista resultado:', lista)
 
@@ -156,13 +152,11 @@ class ListHabilidadesEmpleado(ListView):
 
         # kword, id capturado del GET REQUEST enviado por el input del formulario en el template
         palabra_clave = self.request.GET.get("habilidad")
-
         # recupera un único objeto empleado
         empleado = Empleado.objects.get(
             # método get para obtener listado de habilidades por id
             id=palabra_clave
         )
-
         print("#############")
         print(empleado.habilidades.all())
 
@@ -223,25 +217,15 @@ class EmpleadoCreateView(CreateView):
     ]
     """
     form_class = EmpleadoForm
-
     # atributo para usar el formulario
-
     # todos los fields
-
     # fields = ('__all__')
-    
     # url cuando form exitoso, misma page
-    
     # success_url = '.'
-    
     # url cuando form exitoso
-    
     # success_url = '/success'
-    
     # url cuando form exitoso, name
-
     # redirecciona url
-
     # success_url = reverse_lazy('persona_app:success')
     success_url = reverse_lazy('persona_app:list_admin_empleados')
 
@@ -250,7 +234,6 @@ class EmpleadoCreateView(CreateView):
         """ crear full name a partir de first_name y last_name """
 
         # instancia temporalmente la variable empleado
-
         empleado = form.save(commit=False)
         print(empleado)
         empleado.full_name = empleado.first_name + ' ' + empleado.last_name
@@ -274,18 +257,15 @@ class EmpleadoUpdateView(UpdateView):
         'departamento',
         'habilidades',
     ]
-
     # redirecciona url
-
     # success_url = reverse_lazy('persona_app:success')
     success_url = reverse_lazy('persona_app:list_admin_empleados')
 
     # procesos previos al guardado de datos
     def post(self, request, *args, **kwargs):
-        """  """
+        """ obtener objeto POST """
 
         self.object = self.get_object()
-
         print('######## METODO POST ########')
         print('*****************************')
         print(request.POST)
@@ -294,7 +274,7 @@ class EmpleadoUpdateView(UpdateView):
         return super().post(request, *args, **kwargs)
 
     def form_valid(self, form):
-        """  """
+        """ Validación del formulario """
 
         print('######## METODO FORM VALID ########')
         print('#############################')
@@ -306,10 +286,10 @@ class EmpleadoUpdateView(UpdateView):
 
 
 class EmpleadoDeleteView(DeleteView):
+    """ Elimina un objeto empleado """
+
     template_name = "persona/delete_empleado.html"
     model = Empleado
-
     # redirecciona url
-
     # success_url = reverse_lazy('persona_app:success')
     success_url = reverse_lazy('persona_app:list_admin_empleados')
