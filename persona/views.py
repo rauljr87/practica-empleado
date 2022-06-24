@@ -9,7 +9,10 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
+# models
 from .models import Empleado
+# forms, asignarlo a la vista que está haciendo el CreateView
+from .forms import EmpleadoForm
 
 
 # LISTVIEW
@@ -208,6 +211,8 @@ class EmpleadoCreateView(CreateView):
 
     template_name = 'persona/add_empleado.html'
     model = Empleado
+    # se anula el atributo fields, ya que estamos trabajando con los forms
+    """
     fields = [
         'first_name',
         'last_name',
@@ -216,6 +221,10 @@ class EmpleadoCreateView(CreateView):
         'habilidades',
         'avatar',
     ]
+    """
+    form_class = EmpleadoForm
+
+    # atributo para usar el formulario
 
     # todos los fields
 

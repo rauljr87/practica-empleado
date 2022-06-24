@@ -7,7 +7,7 @@ from django.views.generic import (
 )
 # models
 from .models import Prueba
-# forms
+# forms, asignarlo a la vista que está haciendo el CreateView
 from .forms import PruebaForm
 
 
@@ -44,6 +44,8 @@ class PruebaCreateView(CreateView):
 
     template_name = "home/add.html"
     model = Prueba
+    # se anulan el atributo fiels, ya que estamos trabajando con el form
+    # atributo para usar el formulario
     form_class = PruebaForm
     # success_url = '.'
     success_url = '/'
