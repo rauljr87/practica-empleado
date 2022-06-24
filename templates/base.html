@@ -1,14 +1,18 @@
 <!-- carga archivos estáticos -->
+
 {% load static %}
 
 
 <!-- HEAD -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <!-- carga de CSS foundations -->
     <link rel="stylesheet" href="{% static 'css/foundation.min.css' %}">
+
     <!-- bloque de título --> 
     <title>      
         {% block title %}
@@ -19,6 +23,7 @@
 
 
 <!-- BODY -->
+
 <body>
 
 <!-- bloque de contenido o body -->
@@ -28,6 +33,7 @@
 
 
 <!-- SCRIPT -->
+
 <!-- 
 código javascrip de la página de foundation, incluir todas las rutas js dentro del tag static 
 -->

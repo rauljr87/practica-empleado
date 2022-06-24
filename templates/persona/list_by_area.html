@@ -1,18 +1,26 @@
 <!-- herencia de base.html -->
+
 {% extends 'base.html' %}
 
 
 <!-- titulo -->
+
 {% block title %}
     Lista empleados por departamentos
 {% endblock title %}
     
 
 <!-- body -->
+
 {% block content %}
     
+
     <!-- incluir cabecera -->
+    
     {% include 'includes/header.html' %}
+
+
+    <!-- contenido -->
 
     <div class="grid-container">
         <div class="grid-x">
@@ -20,29 +28,34 @@
             <div class="cell">
                 <table>
                     <thead>
-                      <tr>
-                        <th width="50">ID</th>
-                        <th width="50">NOMBRES</th>
-                        <th width="50">APELLIDOS</th>
-                        <th width="50">DEPARTAMENTOS</th>
-                        <th width="50">ACCION</th>
-                      </tr>
+                        <tr>
+                            <th width="50">ID</th>
+                            <th width="50">NOMBRES</th>
+                            <th width="50">APELLIDOS</th>
+                            <th width="50">DEPARTAMENTOS</th>
+                            <th width="50">ACCION</th>
+                        </tr>
                     </thead>
                     <tbody>
+
                         <!-- object_list = empleados, empleados es la variable declarada en view ListAllEmpleado -->
                         {% for empleado in empleados %}
-                      <tr>
-                        <td>{{ empleado.id }}</td>
-                        <td>{{ empleado.first_name }}</td>
-                        <td>{{ empleado.last_name }}</td>
-                        <td>{{ empleado.departamento }}</td>
-                        <!-- ACCION -->
-                        <td>
-                            <!-- debemos pasar un identificador para el DetailView, empleado.id -->
-                            <a class="button primary" style="border-radius: 8px" href="{% url 'persona_app:detail_empleado' empleado.id %}">Ver</a>
-                        </td>
-                      </tr>
+                        <tr>
+                            <td>{{ empleado.id }}</td>
+                            <td>{{ empleado.first_name }}</td>
+                            <td>{{ empleado.last_name }}</td>
+                            <td>{{ empleado.departamento }}</td>
+                            
+                            
+                            <!-- ACCION -->
+
+                            <td>
+                                <!-- debemos pasar un identificador para el DetailView, empleado.id -->
+                                <a class="button primary" style="border-radius: 8px" href="{% url 'persona_app:detail_empleado' empleado.id %}">Ver</a>
+                            </td>
+                        </tr>
                         {% endfor %}
+
                     </tbody>
                 </table>
             </div>
